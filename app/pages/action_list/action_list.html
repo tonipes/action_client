@@ -4,7 +4,7 @@
 
 <ion-content class="action-list">
   <ion-list>
-    <ion-item *ngFor="#action of actions" (click)="runAction(action)">
+    <ion-item *ngFor="#action of actions" (click)="sendAction(action)">
       {{action.desc}}
     </ion-item>
   </ion-list>

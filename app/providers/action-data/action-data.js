@@ -16,11 +16,11 @@ export class ActionData {
     this.http = http;
     this.data = null;
     // this.address = "http://localhost:9000/actions"
-    this.address = "http://82.130.26.6:8000/actions"
-    this.api_key = "48d3a8b27e3c4c30"
-
-    this.headers = new Headers()
-    this.headers.append('X-Api-Key', this.api_key);
+    this.address = "http://82.130.26.6:8000/actions";
+    this.api_key = "48d3a8b27e3c4c30";
+    this.headers = new Headers({
+      'X-Api-Key': this.api_key,
+    });
   }
 
   load() {
@@ -28,9 +28,10 @@ export class ActionData {
       return Promise.resolve(this.data);
     }
 
-
     return new Promise(resolve => {
-      this.http.get(this.address).subscribe(res => {
+      this.http.get(this.address, {
+        headers: this.headers
+      }).subscribe(res => {
         this.data = this.processData(res.json());
         resolve(this.data);
       });
@@ -42,7 +43,14 @@ export class ActionData {
     return data;
   }
 
-  sendAction(action){
-
+  sendAction(actionid){
+    return new Promise(resolve => {
+      this.http.post(this.address+'/'+actionid, '' , {
+        headers: this.headers
+      }).subscribe(res => {
+        this.data = this.processData(res.json());
+        resolve(this.data);
+      });
+    });
   }
 }

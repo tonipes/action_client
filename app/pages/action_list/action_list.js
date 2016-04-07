@@ -11,12 +11,15 @@ export class ActionList {
   }
 
   constructor(actData) {
-    actData.load().then(actions => {
+    this.actData = actData
+    this.actData.load().then(actions => {
       this.actions = actions;
     });
   }
 
   sendAction(action) {
-
+    this.actData.sendAction(action.id).then(result => {
+      console.log(result)
+    });
   }
 }
