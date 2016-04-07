@@ -16,16 +16,18 @@ export class ActionData {
     this.http = http;
     this.data = null;
     // this.address = "http://localhost:9000/actions"
-    this.address = "http://localhost:9000/actions"
+    this.address = "http://82.130.26.6:8000/actions"
     this.api_key = "48d3a8b27e3c4c30"
+
+    this.headers = new Headers()
+    this.headers.append('X-Api-Key', this.api_key);
   }
 
   load() {
     if (this.data) {
       return Promise.resolve(this.data);
     }
-    // var headers = new Headers()
-    // headers.append('X-Api-Key', this.api_key);
+
 
     return new Promise(resolve => {
       this.http.get(this.address).subscribe(res => {
@@ -38,5 +40,9 @@ export class ActionData {
   processData(data) {
     // No data processing needed
     return data;
+  }
+
+  sendAction(action){
+
   }
 }

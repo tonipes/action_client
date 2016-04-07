@@ -15,4 +15,8 @@ export class ActionList {
       this.actions = actions;
     });
   }
+
+  sendAction(action) {
+
+  }
 }
