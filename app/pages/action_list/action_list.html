@@ -1,0 +1,11 @@
+<ion-navbar *navbar>
+  <ion-title>Action List</ion-title>
+</ion-navbar>
+
+<ion-content class="action-list">
+  <ion-list>
+    <ion-item *ngFor="#action of actions" (click)="runAction(action)">
+      {{action.name}}
+    </ion-item>
+  </ion-list>
+</ion-content>
