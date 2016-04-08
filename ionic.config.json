@@ -1,5 +1,6 @@
 {
-  "name": "action_client",
-  "app_id": "dfe55bfe",
-  "v2": true
+  "name": "action_client_ts",
+  "app_id": "ab121648",
+  "v2": true,
+  "typescript": true
 }

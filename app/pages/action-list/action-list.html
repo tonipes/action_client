@@ -1,0 +1,17 @@
+<!--
+  Generated template for the ActionListPage page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-navbar *navbar>
+  <ion-title>Action List</ion-title>
+</ion-navbar>
+
+<ion-content padding class="action-list">
+  <ion-list>
+    <ion-item *ngFor="#action of actions" (click)="sendAction(action)">
+      {{action.desc}}
+    </ion-item>
+  </ion-list>
+</ion-content>
