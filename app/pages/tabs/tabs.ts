@@ -1,4 +1,4 @@
-import {Page} from 'ionic-angular';
+import {Page,NavParams} from 'ionic-angular';
 import {ActionListPage} from '../action-list/action-list';
 
 
@@ -6,7 +6,9 @@ import {ActionListPage} from '../action-list/action-list';
   templateUrl: 'build/pages/tabs/tabs.html'
 })
 export class TabsPage {
-  // this tells the tabs component which Pages
-  // should be each tab's root Page
+
+  constructor(public navParams: NavParams) {
+  }
+
   tabActions: any = ActionListPage;
 }

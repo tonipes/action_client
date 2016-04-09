@@ -1,0 +1,40 @@
+<!--
+  Generated template for the AuthPage page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-navbar *navbar>
+  <ion-title>Authentication Key</ion-title>
+</ion-navbar>
+
+<ion-content padding class="auth">
+
+  <ion-list>
+    <form [ngFormModel]="authForm">
+      <ion-item>
+        <ion-label>Server</ion-label>
+        <ion-input type="text" ngControl="server"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Port</ion-label>
+        <ion-input type="text" ngControl="port" ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Auth Key</ion-label>
+        <ion-input type="text" ngControl="authkey" ></ion-input>
+      </ion-item>
+
+      <ion-row responsive-sm>
+        <ion-col>
+          <button (click)="setAuth()" type="submit" primary block>Set</button>
+        </ion-col>
+      </ion-row>
+
+    </form>
+
+  </ion-list>
+
+</ion-content>

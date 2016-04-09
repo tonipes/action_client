@@ -10,8 +10,9 @@
 
 <ion-content padding class="action-list">
   <ion-list>
-    <ion-item *ngFor="#action of actions" (click)="sendAction(action)">
-      {{action.desc}}
+    <ion-item *ngFor="#a of actions" (click)="sendAction(a)">
+      <ion-icon [name]="a.icon"></ion-icon>
+      {{a.desc}}
     </ion-item>
   </ion-list>
 </ion-content>

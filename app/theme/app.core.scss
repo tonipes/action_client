@@ -6,5 +6,10 @@
 // These are the imports which make up the design of this app.
 // By default each design mode includes these shared imports.
 // App Shared Sass variables belong in app.variables.scss.
+@import "./app.scss";
 
 @import "../pages/action-list/action-list.scss";
+
+@import "../pages/auth/auth.scss";
+
+@import "../components/loading-modal/loading-modal.scss";

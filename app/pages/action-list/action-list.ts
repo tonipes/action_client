@@ -1,4 +1,4 @@
-import {Page, NavController} from 'ionic-angular';
+import {Page, Events, NavController} from 'ionic-angular';
 import {ActionData} from '../../providers/action-data/action-data';
 
 /*
@@ -11,11 +11,18 @@ import {ActionData} from '../../providers/action-data/action-data';
   templateUrl: 'build/pages/action-list/action-list.html',
 })
 export class ActionListPage {
-  // , public actionData: ActionData
   actions: any = null;
 
-  constructor(public nav: NavController, public actionData: ActionData) {
-    this.nav = nav;
+  constructor(
+      public nav: NavController,
+      public actionData: ActionData,
+      public events: Events) {
+    this.events.subscribe('actions:updated', () => {
+      this.updateData()
+    });
+  }
+
+  updateData() {
     this.actionData.load().then(actions => {
       this.actions = actions;
     });
@@ -26,4 +33,9 @@ export class ActionListPage {
       console.log(result)
     });
   }
+
+  onPageWillEnter() {
+    this.updateData()
+  }
+
 }

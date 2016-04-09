@@ -11,14 +11,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var ionic_angular_1 = require('ionic-angular');
 var action_list_1 = require('../action-list/action-list');
 var TabsPage = (function () {
-    function TabsPage() {
+    function TabsPage(navParams) {
+        this.navParams = navParams;
         this.tabActions = action_list_1.ActionListPage;
     }
     TabsPage = __decorate([
         ionic_angular_1.Page({
             templateUrl: 'build/pages/tabs/tabs.html'
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [ionic_angular_1.NavParams])
     ], TabsPage);
     return TabsPage;
 }());
