@@ -11,30 +11,26 @@
 <ion-content padding class="auth">
 
   <ion-list>
-    <form [ngFormModel]="authForm">
       <ion-item>
         <ion-label>Server</ion-label>
-        <ion-input type="text" ngControl="server"></ion-input>
+        <ion-input type="text" [ngModel]="authdata.server"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label>Port</ion-label>
-        <ion-input type="text" ngControl="port" ></ion-input>
+        <ion-input type="text" [ngModel]="authdata.port"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label>Auth Key</ion-label>
-        <ion-input type="text" ngControl="authkey" ></ion-input>
+        <ion-input type="text" [ngModel]="authdata.authkey"></ion-input>
       </ion-item>
 
       <ion-row responsive-sm>
         <ion-col>
-          <button (click)="setAuth()" type="submit" primary block>Set</button>
+          <button (click)="setAuth()" primary block>Set</button>
         </ion-col>
       </ion-row>
-
-    </form>
-
   </ion-list>
 
 </ion-content>

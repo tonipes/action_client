@@ -14,6 +14,11 @@ import {FormBuilder, Validators} from 'angular2/common';
 })
 export class AuthPage {
   authForm: any = null;
+  authdata = {
+    server: 'localhost',
+    port: 8000,
+    authkey: '48d3a8b27e3c4c30',
+  }
 
   constructor(
       public nav: NavController,
@@ -22,11 +27,6 @@ export class AuthPage {
       form: FormBuilder) {
 
     this.nav = nav;
-    this.authForm = form.group({
-      server: ["", Validators.required, Validators.nullValidator],
-      port: ["", Validators.required, Validators.nullValidator],
-      authkey: ["", Validators.required, Validators.nullValidator]
-    });
   }
 
   setAuth() {
@@ -34,8 +34,8 @@ export class AuthPage {
 
     loading.show();
 
-    this.authData.test(this.authForm.value).then(result => {
-      this.authData.set(this.authForm.value);
+    this.authData.test(this.authdata).then(result => {
+      this.authData.set(this.authdata);
       loading.hide();
     }, error => {
       loading.hide();

@@ -9,7 +9,7 @@
 log.txt
 *.sublime-project
 *.sublime-workspace
-*.js
+app/**/*.js
 .idea/
 .sass-cache/
 .versions/
