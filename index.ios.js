@@ -12,55 +12,85 @@ import React, {
   ListView
 } from 'react-native';
 
+import Icon from 'react-native-vector-icons/MaterialIcons';
+
 import * as Material from 'react-native-material-kit';
 
-import {
-  TRModuleList
-} from './components'
+import * as Style from './styles';
 
-var MOCK_DATA = {
-  modules: [
-    {type: "trafficlight",  icon: 'stars',       title: "Traffic Light 1", subtitle: "All Good!",  status: 1},
-    {type: "trafficlight",  icon: 'today',     title: "Traffic Light 2", subtitle: "Warning!",   status: 2},
-    {type: "trafficlight",  icon: 'work',       title: "Traffic Light 3", subtitle: "Critical!",  status: 3},
-    {type: "trafficlight",  icon: 'settings', title: "Traffic Light 0", subtitle: "Unknown!",   status: 0},
-    {type: "text",          icon: 'favorite',        title: "Text 0 ",         body: "Hello from text module"},
-    {type: "text",          icon: 'check-circle', title: "Text 1",          body: "Hello again!"},
-  ]
-};
+import {NavBar} from './components/navbar'
+
+import NavigationBar from 'react-native-navbar';
+import * as Mocks from './mocks';
+
+import { ModuleList } from './components/moduleList'
 
 class reactNativeOmni extends Component {
+
   constructor(props) {
     super(props);
     var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+    console.log(Mocks.modules)
     this.state = {
-      dataSource: ds.cloneWithRows(MOCK_DATA.modules),
+      dataSource: ds.cloneWithRows(Mocks.modules),
     }
   }
 
   componentDidMount() {
       // this.fetchData();
   }
-
+  // <NavigationBar
+  //   title={config.title}
+  //   statusBar={config.statusBar}
+  //   style={styles.topBar}
+  //   leftButton={settingsButton}
+  // />
   render() {
+    const settingsButton = {
+      title: <Icon style={styles.navicon} name="menu"/>,
+      tintColor: 'white',
+      handler: () => alert('hello!'),
+    };
     return (
       <View style={styles.container}>
-        <TRModuleList
+        <NavigationBar
+          title={config.title}
+          statusBar={config.statusBar}
+          style={styles.topBar}
+        />
+        <ModuleList
           style={styles.list}
           modules={this.state.dataSource}>
-        </TRModuleList>
+        </ModuleList>
       </View>
     );
   }
 }
 
+const config = {
+  title: {
+    title: 'Dashboard',
+    tintColor: Style.colors.lightText,
+  },
+  statusBar: {
+    tintColor: Style.colors.main,
+    style: 'light-content'
+  },
+}
 const styles = StyleSheet.create({
+  topBar: {
+    backgroundColor: Style.colors.main,
+  },
   container: {
     flex: 1,
-    backgroundColor: Material.MKColor.Silver,
+    backgroundColor: Style.colors.background,
   },
   list: {
-    paddingVertical: 20
+    paddingVertical: 10
+  },
+  navicon: {
+    fontSize: 30,
+    marginLeft: 8
   }
 });
 
