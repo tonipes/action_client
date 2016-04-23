@@ -5,11 +5,8 @@ import React, {
 } from 'react-native';
 
 import { mdl } from 'react-native-material-kit';
-
 import Icon from 'react-native-vector-icons/MaterialIcons';
-
 import * as mod from './module'
-
 import * as Style from '../../styles';
 
 export class ProgressBarModule extends mod.Module {
@@ -25,6 +22,5 @@ export class ProgressBarModule extends mod.Module {
 const styles = StyleSheet.create({
   title: {
     paddingBottom: 5,
-    // fontSize: 12,
   },
 })

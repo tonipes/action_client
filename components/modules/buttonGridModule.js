@@ -3,18 +3,11 @@ import React, {
   View,
   StyleSheet,
   Component,
-  Image
 } from 'react-native';
 
-import {
-  getTheme,
-  MKButton
-} from 'react-native-material-kit';
-
+import {MKButton } from 'react-native-material-kit';
 import * as Style from '../../styles';
-
 import Icon from 'react-native-vector-icons/MaterialIcons';
-
 import * as mod from './module'
 
 class CircleButtonWrapper extends Component {

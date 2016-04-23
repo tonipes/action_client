@@ -5,7 +5,6 @@ import React, {
 } from 'react-native';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
-
 import * as mod from './module'
 
 export class TextModule extends mod.Module {

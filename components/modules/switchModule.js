@@ -5,9 +5,7 @@ import React, {
 } from 'react-native';
 
 import { MKCheckbox } from 'react-native-material-kit';
-
 import Icon from 'react-native-vector-icons/MaterialIcons';
-
 import * as mod from './module'
 
 export class SwitchModule extends mod.Module {

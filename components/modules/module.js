@@ -9,12 +9,13 @@ import * as Style from '../../styles';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 export class Module extends Component {
-  getLeftContent() { return(
-    <View>
-      { this.props.icon ?
-        <Icon style={styles.icon} name={this.props.icon}/>  : null}
-    </View>
-  );}
+  getLeftContent() {
+    if(this.props.icon){
+      return(<Icon style={styles.icon} name={this.props.icon}/>)
+    } else {
+      return null;
+    }
+  }
 
   getMiddleContent() { return(
     <View>
@@ -62,7 +63,6 @@ export const styles = StyleSheet.create({
   subtext: {
     paddingTop: 2,
     fontSize: 12,
-    // color: Style.colors.subtitle
   },
   cardContent: {
     flex: 1,
