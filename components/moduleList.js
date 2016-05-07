@@ -7,15 +7,14 @@ import React, {
 
 } from 'react-native';
 
-import * as Style from '../styles';
-
-import Icon from 'react-native-vector-icons/MaterialIcons';
-
 import {
   getTheme,
   mdl
 } from 'react-native-material-kit';
 
+
+import * as Style from '../styles';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 import {TextModule} from './modules/textModule';
 import {SwitchModule} from './modules/switchModule';
 import {StatusModule} from './modules/statusModule';
@@ -47,7 +46,7 @@ export class ModuleList extends Component {
     return (
       <ListView style={this.props.style}
         dataSource={modules}
-        renderRow={(moduleGroup) => <ModuleContainer modules={moduleGroup}></ModuleContainer>}
+        renderRow={(moduleGroup) => <ModuleContainer key={moduleGroup.id} modules={moduleGroup}></ModuleContainer>}
       />
     );
   }
@@ -62,7 +61,7 @@ class ModuleContainer extends Component {
           {
             modules.map((module) => {
               var ModuleType = getModuleType(module.type)
-              return <ModuleType key={module.id} {...module}/>
+              return <ModuleType key={module.id} {...module}/>;
             })
           }
         </View>

@@ -41,7 +41,6 @@ const MODULES = [
     title: "JoJo's Bizzare Adventure: Stardust Crusaders: A Man Possessed by ...",
   }, {
     type: "progress",
-    // icon: 'flight-takeoff',
     title: "02:10 / 23:32"
   }],
 

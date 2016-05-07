@@ -5,16 +5,24 @@ import React, {
   Component,
 } from 'react-native';
 
-import {MKButton } from 'react-native-material-kit';
+import { MKButton } from 'react-native-material-kit';
 import * as Style from '../../styles';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import * as mod from './module'
+import * as Api from '../../managers/api'
 
 class CircleButtonWrapper extends Component {
+  onPress() { Api.run_action(this.props.action) }
+
   render() {
     return (
       <View style={styles.buttonContainer}>
-        <MKButton fab={true} style={styles.fab} backgroundColor={Style.colors.success}>
+        <MKButton
+          fab={true}
+          style={styles.fab}
+          backgroundColor={Style.colors.success}
+          onPress={ ()=>{ this.onPress() } }
+          >
           { this.props.icon ?
             <Icon style={[mod.styles.icon, styles.icon]} name={this.props.icon}/> : null}
         </MKButton>
@@ -29,7 +37,7 @@ export class ButtonGridModule extends mod.Module {
     <View style={styles.buttonContent}>
       {this.props.buttons.map((config) => {
         return (
-          <CircleButtonWrapper key={config.id} icon={config.icon}></CircleButtonWrapper>
+          <CircleButtonWrapper key={config.id} action={config.action} icon={config.icon}></CircleButtonWrapper>
         )})}
     </View>
   );}

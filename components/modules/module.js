@@ -20,9 +20,9 @@ export class Module extends Component {
   getMiddleContent() { return(
     <View>
       { this.props.title ?
-        <Text style={styles.title}>{this.props.title}</Text> : null}
+        <Text style={styles.title}>{this.props.title}</Text> : null }
       { this.props.subtext ?
-        <Text style={styles.subtext}>{this.props.subtext}</Text> : null}
+        <Text style={styles.subtext}>{this.props.subtext}</Text> : null }
     </View>
   );}
 
@@ -35,9 +35,9 @@ export class Module extends Component {
     var right = this.getRightContent();
     return (
       <View style={styles.cardContent}>
-        {left ? <View style={styles.left}>{this.getLeftContent()}</View> : null}
-        {middle ? <View style={styles.middle}>{this.getMiddleContent()}</View> : null}
-        {right ? <View style={styles.right}>{this.getRightContent()}</View> : null}
+        {left ? <View style={styles.left}>{this.getLeftContent()}</View> : null }
+        {middle ? <View style={styles.middle}>{this.getMiddleContent()}</View> : null }
+        {right ? <View style={styles.right}>{this.getRightContent()}</View> : null }
       </View>
     );
   }

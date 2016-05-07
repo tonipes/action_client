@@ -14,7 +14,7 @@ export class ProgressBarModule extends mod.Module {
     <View>
       { this.props.title ?
         <Text style={styles.title}>{this.props.title}</Text> : null}
-      <mdl.Progress progress={0.2}/>
+      <mdl.Progress progress={this.props.value || 0.0}/>
     </View>
   );}
 }

@@ -12,33 +12,48 @@ import React, {
   ListView
 } from 'react-native';
 
-import Icon from 'react-native-vector-icons/MaterialIcons';
-
-import * as Material from 'react-native-material-kit';
-
-import * as Style from './styles';
-
-import {NavBar} from './components/navbar'
-
-import NavigationBar from 'react-native-navbar';
-import * as Mocks from './mocks';
-
 import { ModuleList } from './components/moduleList'
+import { NavBar } from './components/navbar'
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import NavigationBar from 'react-native-navbar';
+import * as Material from 'react-native-material-kit';
+import * as Style from './styles';
+import * as Mocks from './mocks';
+import * as Api from './managers/api'
 
 class reactNativeOmni extends Component {
 
   constructor(props) {
     super(props);
     var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-    console.log(Mocks.modules)
+    var data = []
     this.state = {
-      dataSource: ds.cloneWithRows(Mocks.modules),
+      db: data,
+      dataSource: ds.cloneWithRows(data),
     }
   }
 
   componentDidMount() {
-      // this.fetchData();
+      this.fetchData();
+      setInterval(() => this.fetchData(), 1000);
   }
+
+  fetchData() {
+    console.log("get_modules")
+    Api.get_modules()
+      .then((d) => {
+        console.log(d)
+        this.setState({
+          dataSource: this.state.dataSource.cloneWithRows(d),
+          db: d,
+        });
+      })
+      .catch((r) => {
+        console.log("catch")
+        console.log(r);
+      })
+  }
+
   // <NavigationBar
   //   title={config.title}
   //   statusBar={config.statusBar}

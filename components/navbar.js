@@ -6,7 +6,6 @@ import React, {
 } from 'react-native';
 
 import * as Material from 'react-native-material-kit';
-
 import * as Style from '../styles';
 
 const NAV_BAR_HEIGHT = 60;
