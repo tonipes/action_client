@@ -13,35 +13,11 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class ActionData {
   data: any = null;
-  // address: string = "http://82.130.26.6:8000/actions";
-  // headers: Headers = new Headers({'X-Api-Key': "48d3a8b27e3c4c30"});
 
   constructor(
     public http: Http,
     public authData: AuthData,
     public events: Events) {}
-
-  load() {
-    if (this.data) {
-      return Promise.resolve(this.data);
-    }
-    if (!this.authData.authdata){
-      return Promise.reject('fail');
-    }
-    var auth = this.authData.getRequestData()
-    // don't have the data yet
-    return new Promise((resolve, reject) => {
-      this.http.get(auth.address, {headers: auth.headers})
-        .map(res => res.json())
-        .subscribe(data => {
-          this.data = data;
-          this.events.publish('actions:updated');
-          resolve(this.data);
-        }, error => {
-          reject('Fail');
-        });
-    });
-  }
 
   sendAction(actionid) {
     var auth = this.authData.getRequestData()

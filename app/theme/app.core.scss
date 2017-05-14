@@ -8,10 +8,12 @@
 // App Shared Sass variables belong in app.variables.scss.
 @import "./app.scss";
 
-@import "../pages/action-list/action-list.scss";
+@import "../pages/block-list/block-list.scss";
 
 @import "../pages/auth/auth.scss";
 
 @import "../components/loading-modal/loading-modal.scss";
 
-@import 'font-awesome';
+// @import 'font-awesome';
+
+@import "../pages/block-list/block-list.scss";

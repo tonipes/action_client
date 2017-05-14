@@ -20,27 +20,6 @@ var ActionData = (function () {
         this.events = events;
         this.data = null;
     }
-    ActionData.prototype.load = function () {
-        var _this = this;
-        if (this.data) {
-            return Promise.resolve(this.data);
-        }
-        if (!this.authData.authdata) {
-            return Promise.reject('fail');
-        }
-        var auth = this.authData.getRequestData();
-        return new Promise(function (resolve, reject) {
-            _this.http.get(auth.address, { headers: auth.headers })
-                .map(function (res) { return res.json(); })
-                .subscribe(function (data) {
-                _this.data = data;
-                _this.events.publish('actions:updated');
-                resolve(_this.data);
-            }, function (error) {
-                reject('Fail');
-            });
-        });
-    };
     ActionData.prototype.sendAction = function (actionid) {
         var _this = this;
         var auth = this.authData.getRequestData();

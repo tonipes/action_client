@@ -1,0 +1,28 @@
+{
+  "blocks": [
+    {
+      "title": "Test1",
+      "type": "block-statuslight",
+      "subtitle": "OK!",
+      "status": 1
+    },
+    {
+      "title": "Test2",
+      "type": "block-statuslight",
+      "subtitle": "Warn",
+      "status": 2
+    },
+    {
+      "title": "Test3",
+      "type": "block-statuslight",
+      "subtitle": "Critical",
+      "status": 3
+    },
+    {
+      "title": "Test4",
+      "type": "block-statuslight",
+      "subtitle": "Unknown",
+      "status": 0
+    }
+  ]
+}

@@ -1,7 +1,5 @@
 import {IonicApp, Events, Page, NavController} from 'ionic-angular';
 import {AuthData} from '../../providers/auth-data/auth-data'
-import {ActionData} from '../../providers/action-data/action-data'
-import {FormBuilder, Validators} from 'angular2/common';
 
 /*
   Generated class for the AuthPage page.
@@ -13,7 +11,7 @@ import {FormBuilder, Validators} from 'angular2/common';
   templateUrl: 'build/pages/auth/auth.html',
 })
 export class AuthPage {
-  authForm: any = null;
+
   authdata = {
     server: 'localhost',
     port: 8000,
@@ -23,8 +21,8 @@ export class AuthPage {
   constructor(
       public nav: NavController,
       public app: IonicApp,
-      public authData: AuthData,
-      form: FormBuilder) {
+      public authData: AuthData
+    ) {
 
     this.nav = nav;
   }

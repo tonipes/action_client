@@ -12,23 +12,27 @@ require('es6-shim');
 var ionic_angular_1 = require('ionic-angular');
 var ionic_native_1 = require('ionic-native');
 var loading_modal_1 = require('./components/loading-modal/loading-modal');
-var action_data_1 = require('./providers/action-data/action-data');
+var action_sender_1 = require('./providers/action-sender/action-sender');
+var block_data_1 = require('./providers/block-data/block-data');
 var auth_data_1 = require('./providers/auth-data/auth-data');
 var auth_1 = require('./pages/auth/auth');
-var action_list_1 = require('./pages/action-list/action-list');
+var block_list_1 = require('./pages/block-list/block-list');
 var MyApp = (function () {
-    function MyApp(platform, authData, actionData, app, events) {
+    function MyApp(platform, authData, blockData, actionSender, app, events) {
         this.platform = platform;
         this.authData = authData;
-        this.actionData = actionData;
+        this.blockData = blockData;
+        this.actionSender = actionSender;
         this.app = app;
         this.events = events;
-        this.rootPage = auth_1.AuthPage;
+        this.rootPage = block_list_1.BlockListPage;
         this.menuPages = [
             { title: 'Authentication', page: auth_1.AuthPage, index: 1, icon: 'lock' },
             { title: 'Settings', page: auth_1.AuthPage, index: 2, icon: 'settings' },
-            { title: 'Actions', page: action_list_1.ActionListPage, index: 3, icon: 'menu' },
+            { title: 'Blocks', page: block_list_1.BlockListPage, index: 3, icon: 'menu' },
         ];
+        this.authData.set({});
+        this.blockData.load();
         this.listenToEvents();
         platform.ready().then(function () {
             ionic_native_1.StatusBar.styleDefault();
@@ -40,17 +44,19 @@ var MyApp = (function () {
     MyApp.prototype.listenToEvents = function () {
         var _this = this;
         this.events.subscribe('auth:ready', function () {
-            _this.actionData.load();
+            _this.blockData.load();
         });
     };
     MyApp = __decorate([
         ionic_angular_1.App({
             templateUrl: 'build/app.html',
-            config: {},
+            config: {
+                mode: 'md',
+            },
             directives: [loading_modal_1.LoadingModal],
-            providers: [auth_data_1.AuthData, action_data_1.ActionData, ionic_angular_1.IonicApp, ionic_angular_1.Events]
+            providers: [auth_data_1.AuthData, action_sender_1.ActionSender, ionic_angular_1.IonicApp, ionic_angular_1.Events, block_data_1.BlockData]
         }), 
-        __metadata('design:paramtypes', [ionic_angular_1.Platform, auth_data_1.AuthData, action_data_1.ActionData, ionic_angular_1.IonicApp, ionic_angular_1.Events])
+        __metadata('design:paramtypes', [ionic_angular_1.Platform, auth_data_1.AuthData, block_data_1.BlockData, action_sender_1.ActionSender, ionic_angular_1.IonicApp, ionic_angular_1.Events])
     ], MyApp);
     return MyApp;
 }());

@@ -4,35 +4,42 @@ import {StatusBar} from 'ionic-native';
 
 import {LoadingModal} from './components/loading-modal/loading-modal';
 
-import {ActionData} from './providers/action-data/action-data';
+import {ActionSender} from './providers/action-sender/action-sender';
+import {BlockData} from './providers/block-data/block-data';
 import {AuthData} from './providers/auth-data/auth-data';
 
-import {TabsPage} from './pages/tabs/tabs';
+// import {TabsPage} from './pages/tabs/tabs';
 import {AuthPage} from './pages/auth/auth';
-import {ActionListPage} from './pages/action-list/action-list';
+import {BlockListPage} from './pages/block-list/block-list';
 
 @App({
   templateUrl: 'build/app.html',
-  config: {}, // http://ionicframework.com/docs/v2/api/config/Config/
+  config: {
+    mode: 'md',
+  },
   directives: [LoadingModal],
-  providers: [AuthData, ActionData, IonicApp, Events]
+  providers: [AuthData, ActionSender, IonicApp, Events, BlockData]
 })
 export class MyApp {
-  rootPage: any = AuthPage;
+  rootPage: any = BlockListPage;
 
   menuPages = [
     { title: 'Authentication', page: AuthPage, index: 1, icon: 'lock' },
     { title: 'Settings', page: AuthPage, index: 2, icon: 'settings' },
-    { title: 'Actions', page: ActionListPage, index: 3, icon: 'menu' },
+    { title: 'Blocks', page: BlockListPage, index: 3, icon: 'menu' },
   ];
 
   constructor(
       public platform: Platform,
       public authData: AuthData,
-      public actionData: ActionData,
+      public blockData: BlockData,
+      public actionSender: ActionSender,
       public app: IonicApp,
       public events: Events
     ) {
+      
+    this.authData.set({})
+    this.blockData.load()
 
     this.listenToEvents();
     platform.ready().then( () => {
@@ -42,14 +49,12 @@ export class MyApp {
   }
 
   openPage(item) {
-    // var nav = this.app.getComponent('main-nav');
     this.rootPage = item.page
-  //   nav.push(page.component);
   }
 
   listenToEvents() {
     this.events.subscribe('auth:ready', () => {
-      this.actionData.load()
+      this.blockData.load()
     });
   }
 }

@@ -21,7 +21,8 @@ export class AuthData {
   }
 
   test(data) {
-    var address = 'http://' + data.server + ':' + data.port + '/actions'
+    var address = 'data/blocks.json'
+    // var address = 'http://' + data.server + ':' + data.port + '/actions'
     var headers = new Headers({'X-Api-Key': data.authkey});
     return new Promise((resolve, reject) => {
       var req = this.http.get(address, {headers: headers});
